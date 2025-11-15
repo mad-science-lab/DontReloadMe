@@ -27,6 +27,15 @@ This is intended for testing how browser refresh prevention behaves in different
 
 Open the HTML file in a browser. The page will display both clocks and will block refresh actions triggered by F5 or common shortcut keys.
 
+## Using dontreloadme.js
+
+The repository includes a standalone JavaScript file named `dontreloadme.js`. It contains the logic that blocks page reload actions such as F5, Ctrl+R, and Cmd+R.
+
+To enable this behavior in your own HTML file, add the script tag below inside the `<head>` or at the end of the `<body>`:
+
+```html
+<script src="dontreloadme.js"></script>
+
 ## Notes
 
 Modern browsers may still allow refresh using menus or other user interface controls. This is expected and aligns with browser security and usability rules.
