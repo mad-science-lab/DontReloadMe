@@ -18,7 +18,7 @@ This is intended for testing how browser refresh prevention behaves in different
 
 ## Files
 
-- `testf5.html`  
+- `DontReloadMe.html`  
   The main test page containing both clocks, styling, and the refresh-blocking logic.
 
 ## Usage
