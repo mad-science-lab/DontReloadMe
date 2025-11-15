@@ -26,6 +26,7 @@ This is intended for testing how browser refresh prevention behaves in different
 ## Usage
 
 Open the HTML file in a browser. The page will display both clocks and will block refresh actions triggered by F5 or common shortcut keys.
+- This will run localy on your PC
 
 ## Using dontreloadme.js
 
