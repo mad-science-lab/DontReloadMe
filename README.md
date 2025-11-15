@@ -35,10 +35,11 @@ To enable this behavior in your own HTML file, add the script tag below inside t
 
 ```html
 <script src="dontreloadme.js"></script>
+```
 
 ## Notes
 
-Modern browsers may still allow refresh using menus or other user interface controls. This is expected and aligns with browser security and usability rules.
+Modern browsers may(should) still allow refresh using menus or other user interface controls. This is expected and aligns with browser security and usability rules.
 
 ## License
 
