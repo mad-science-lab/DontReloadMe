@@ -1,0 +1,185 @@
+<html dir="ltr" lang="en" class="focus-outline-visible" lazy-loaded="true">
+<head>
+  <meta charset="utf-8">
+  <title>Test F5 with Clocks</title>
+  <style>
+    body {
+      background: #000000;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #ffffff;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-weight: normal;
+	  color: #32ff32;
+	  font-family: "Courier New", monospace;
+    }
+	
+	.f5-description{
+	  font-size: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+	  color: #ff2a2a;
+	  font-family: "Courier New", monospace;
+	}
+
+    .clock-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+    }
+	
+	
+
+    .clock-label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+	  color: #32ff32;
+	  font-family: "Courier New", monospace;
+    }
+
+    .clock {
+      font-size: 64px;
+      letter-spacing: 6px;
+      padding: 10px 20px;
+      background-color: #111;
+      border-radius: 2px;
+      font-family: 'Digital-7', 'Orbitron', 'Share Tech Mono', monospace;
+      text-align: center;
+      min-width: 430px;
+    }
+
+    /* 7-segment style effects */
+    .clock-red {
+      color: #ff2a2a;
+      text-shadow:
+        0 0 4px #b00000,
+        0 0 8px #b00000,
+        0 0 12px #b00000;
+    }
+
+    .clock-green {
+      color: #32ff32;
+      text-shadow:
+        0 0 4px #00a000,
+        0 0 8px #00a000,
+        0 0 12px #00a000;
+    }
+	
+	  .code-box {
+		background: #111;
+		border: 1px solid #444;
+		padding: 15px;
+		margin-top: 40px;
+		width: 80%;
+		max-width: 800px;
+		color: #32ff32;
+		font-family: "Courier New", monospace;
+		font-size: 14px;
+		white-space: pre;
+		overflow-x: auto;
+		box-shadow: 0 0 8px #000 inset;
+	  }
+
+	  .code-box code {
+		color: #32ff32;
+	  }
+	  
+  </style>
+</head>
+
+<body>
+  <h1>Test F5</h1>
+  
+ <div class="f5-description">
+	Pressing the refresh button on the browser will reload this page, but pressing F5 will not.
+ </div>
+ 
+  <div class="clock-container">
+    <div>
+      <div class="clock-label">Page Load Time</div>
+      <div id="loadTimeClock" class="clock clock-red">--:--:--</div>
+    </div>
+
+    <div>
+      <div class="clock-label">Current Time</div>
+      <div id="realTimeClock" class="clock clock-green">--:--:--</div>
+    </div>
+  </div>
+  
+  <div class="code-box">
+  <pre><code>
+		// Pressing the refresh button on the browser will reload this page, 
+		// but pressing F5 will not.
+		
+		&lt;script&gt;
+		  // Block F5 and Ctrl+R / Cmd+R
+		  document.addEventListener("keydown", function (e) {
+			// F5 key
+			if (e.key === "F5" || e.keyCode === 116) {
+			  e.preventDefault();
+			}
+
+			// Ctrl+R or Cmd+R
+			if ((e.ctrlKey || e.metaKey) && e.key && e.key.toLowerCase() === "r") {
+			  e.preventDefault();
+			}
+		  });
+		&lt;/script&gt;
+		  </code></pre>
+</div>
+
+  <script>
+    function formatTime(date) {
+      const pad = (n) => n.toString().padStart(2, "0");
+      const hours = pad(date.getHours());
+      const minutes = pad(date.getMinutes());
+      const seconds = pad(date.getSeconds());
+      return hours + ":" + minutes + ":" + seconds;
+    }
+
+    // Set page load time once
+    window.addEventListener("DOMContentLoaded", function () {
+      const loadTimeClock = document.getElementById("loadTimeClock");
+      const realTimeClock = document.getElementById("realTimeClock");
+
+      const loadTime = new Date();
+      loadTimeClock.textContent = formatTime(loadTime);
+
+      // Update real-time clock every second
+      function updateRealTimeClock() {
+        const now = new Date();
+        realTimeClock.textContent = formatTime(now);
+      }
+
+      updateRealTimeClock();
+      setInterval(updateRealTimeClock, 1000);
+    });
+
+    // Block F5 and Ctrl+R / Cmd+R
+    document.addEventListener("keydown", function (e) {
+      // F5 key
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+      }
+
+      // Ctrl+R or Cmd+R
+      if ((e.ctrlKey || e.metaKey) && e.key && e.key.toLowerCase() === "r") {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
