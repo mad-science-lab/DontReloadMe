@@ -4,6 +4,8 @@ This project demonstrates how to intercept and block browser refresh actions suc
 
 The page also shows the JavaScript snippet used to block refresh actions in a formatted code box for reference.
 
+![DontReloadMe Screenshot](DontReloadMe.png)
+
 ## Features
 
 - Prevents F5, Ctrl+R, and Cmd+R from refreshing the page.
